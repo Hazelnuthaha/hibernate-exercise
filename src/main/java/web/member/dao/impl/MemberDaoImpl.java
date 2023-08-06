@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import web.member.dao.MemberDao;
 import web.member.pojo.Member;
 
@@ -16,6 +18,9 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int insert(Member member) {
 		final String sql = "insert into MEMBER(USERNAME, PASSWORD, NICKNAME, ROLE_ID) " + "values(?, ?, ?, ?)";
+//		getSession().persist(member);
+//		return 1;
+		
 		try (
 			Connection conn = getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -32,6 +37,10 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int deleteById(Integer id) {
+//		Session session = getSession();
+//		Member member = session.get(Member.class, id);
+//		session.remove(member);
+//		return 1;
 		final String sql = "delete from MEMBER where ID = ?";
 		try (
 			Connection conn = getConnection();
