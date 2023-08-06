@@ -15,21 +15,41 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import core.util.HibernateUtil;
-import web.member.pojo.Member;
+import web.emp.entity.Dept;
+import web.emp.entity.Emp;
+import web.member.entity.Member;
 
 public class TestApp {
 	public static void main(String[] args) {
 //		HibernateUtil h = new HibernateUtil();
 //		SessionFactory sessionFactory = h.getSessionFactory();
 		
-//		SessionFactory sessionFactory = new HibernateUtil().getSessionFactory();
-//		Session session = sessionFactory.openSession();
+		SessionFactory sessionFactory = new HibernateUtil().getSessionFactory();
+		Session session = sessionFactory.openSession();
+		
+		Emp emp = session.get(Emp.class, 7369);
+		Dept dept = emp.getDept();
+		List<Emp> emps = dept.getEmps();
+        for(Emp tmp :emps) {
+            System.out.println(tmp.getEname());
+        }
+		
+//		Emp emp = session.get(Emp.class, 7369);
+//		Dept dept = emp.getDept();
+//		System.out.println(dept.getDeptno());
+//		System.out.println(dept.getDname());
+		
+//		Dept dept = session.get(Dept.class, 30);
+//		var emps = dept.getEmps();
+//		for(var emp : emps) {
+//			System.out.println(emp.getEname());
+//		}
 //		Member member = session.get(Member.class, 1);
 //		System.out.println(member.getNickname());
 //		
 //		HibernateUtil.shutdown();
 		
-		TestApp ta = new TestApp();
+//		TestApp ta = new TestApp();
 		//insert
 //		Member member = new Member();
 //		member.setUsername("NewMember文");

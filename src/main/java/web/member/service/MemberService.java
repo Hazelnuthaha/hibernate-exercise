@@ -2,7 +2,7 @@ package web.member.service;
 
 import java.util.List;
 
-import web.member.pojo.Member;
+import web.member.entity.Member;
 
 public interface MemberService {
 
